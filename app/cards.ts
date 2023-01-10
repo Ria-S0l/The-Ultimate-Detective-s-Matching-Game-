@@ -49,7 +49,7 @@ canvas.addEventListener(
   }
 )
 
-export const cardDrawer = { //draws the cards/ obviously 
+export const cardDrawer = { //draws the cards, obviously 
   rows: 4,
   guesses: 0,
   cardWidth: 70,
@@ -119,6 +119,7 @@ export const cardDrawer = { //draws the cards/ obviously
 
   },
   draw() {
+    ctx.font = "32px cursive"
     ctx.fillText(
       this.guesses,
       canvas.width - 200,
@@ -144,6 +145,7 @@ export const cardDrawer = { //draws the cards/ obviously
           this.cardWidth, this.cardHeight
         );
         if (card.show || card.matched) {
+          ctx.font = "13px sans-serif"
           ctx.fillText(
             card.name, card.x + 5, card.y + this.cardHeight / 2
           );
