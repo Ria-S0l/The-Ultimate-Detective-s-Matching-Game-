@@ -119,11 +119,11 @@ export const cardDrawer = { //draws the cards, obviously
 
   },
   draw() {
-    ctx.font = "32px cursive"
+    ctx.font = "32px sans"
     ctx.fillText(
       this.guesses,
       canvas.width - 200,
-      300
+      340
     );
 
     this.layout();
@@ -145,7 +145,7 @@ export const cardDrawer = { //draws the cards, obviously
           this.cardWidth, this.cardHeight
         );
         if (card.show || card.matched) {
-          ctx.font = "13px sans-serif"
+          ctx.font = "13px cursive"
           ctx.fillText(
             card.name, card.x + 5, card.y + this.cardHeight / 2
           );
