@@ -1,6 +1,8 @@
 import { ctx, canvas } from './canvas'
 import { shuffle } from './util';
-import { blinking, closeEye, jumping } from './spriteAnimate'
+import { blinking, closeEye, jumping } from 
+'./spriteAnimate'
+import { scoreboard } from './scoreboard'
 
 // card images
 
@@ -91,7 +93,7 @@ export const cardDrawer = { //draws the cards, obviously
     )
   },
   showCard(card) {
-    this.guesses += 1;
+    scoreboard.clicks += 1;
     let shown = this.cards.filter((c) => c.show); //get a list of all the cards
     if (shown.length == 2) {
       this.cards.forEach((c) => c.show = false); //once you get two, hide them
@@ -111,6 +113,7 @@ export const cardDrawer = { //draws the cards, obviously
         console.log('Jump!');
         // Matched, jump!
         jumping();
+        scoreboard.score += 1
       } else {
          // Close eyes if wrong...
         closeEye()
@@ -119,13 +122,6 @@ export const cardDrawer = { //draws the cards, obviously
 
   },
   draw() {
-    ctx.font = "32px sans"
-    ctx.fillText(
-      this.guesses,
-      canvas.width - 200,
-      340
-    );
-
     this.layout();
     const width = 80;
     const height = 100;
